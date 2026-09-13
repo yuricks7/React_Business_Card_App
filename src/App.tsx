@@ -1,9 +1,8 @@
 import './App.css';
-// import { supabase } from './utils/supabase/supabaseClient';
 import { getAllData } from './utils/supabase/supabaseTest';
 
 function App() {
-  const data = getAllData();
+  getAllData();
 
   return (
     <div>
