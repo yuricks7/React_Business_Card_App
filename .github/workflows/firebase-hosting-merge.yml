@@ -5,22 +5,16 @@ name: Deploy to Firebase Hosting on merge
 on:
   push:
     branches:
-      - main
+      - y
 jobs:
   build_and_deploy:
     runs-on: ubuntu-latest
     steps:
-      - name: Run build
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
       - run: npm ci && npm run build
-        env:
-          VITE_SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
-          VITE_SUPABASE_PUBLISHABLE_API_KEY: ${{ secrets.SUPABASE_PUBLISHABLE_API_KEY }}
-
-      - name: Deploy to firebase
-        uses: FirebaseExtended/action-hosting-deploy@v0
+      - uses: FirebaseExtended/action-hosting-deploy@v0
         with:
           repoToken: ${{ secrets.GITHUB_TOKEN }}
-          firebaseServiceAccount: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_MY_STUDY_LOG_V3 }}
+          firebaseServiceAccount: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_BUSINESS_CARD_APP_E399C }}
           channelId: live
           projectId: business-card-app-e399c
